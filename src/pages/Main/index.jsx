@@ -1,8 +1,12 @@
 import React from 'react'
+import * as Styled from './styled';
+import MainSection from '../../components/MainSection/index';
 
 const Main = () => {
   return (
-    <div>Main</div>
+    <Styled.Container>
+      <MainSection />
+    </Styled.Container>
   )
 }
 
