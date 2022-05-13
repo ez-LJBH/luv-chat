@@ -1,9 +1,15 @@
-import React from 'react'
+import * as Styled from "./styled";
 
-const index = () => {
+const ChatSection = () => {
   return (
-    <div>index</div>
+    <Styled.Container >
+        <Styled.Rowbar>
+        <Styled.chatBox />
+        <Styled.send> send </Styled.send>
+        </Styled.Rowbar>
+    </Styled.Container >
+    
   )
 }
 
-export default index
+export default ChatSection
