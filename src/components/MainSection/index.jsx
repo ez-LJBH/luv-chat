@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Styled from "./styled";
-import { FiCamera } from 'react-icons/fi';
+import { IconButton, Menu, MenuItem} from '@mui/material'
+// import { MoreVertIcon } from '@mui/icons-material';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-const Main = () => {
+const MainSection = () => {
+  /* Dday 설정 */
   const loveDate = new Date('2022-05-04');
   const loveYear = loveDate.getFullYear();
-  const loveMonth = loveDate.getMonth();
+  const loveMonth = loveDate.getMonth()+1;
   const loveDay = loveDate.getDate();
 
   const nowDate = new Date();
 
-  const passedTime = nowDate.getTime() - loveDate.getTime();
+  const KoreaTime = 9 * 60 * 60 * 1000;
+  const passedTime = nowDate.getTime()  - loveDate.getTime() + KoreaTime;
   const passedDay = Math.round(passedTime/(24*60*60*1000));
+
+  /* 프로필 수정 버튼 */
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  }
+  const handleClose = () => {
+    setAnchorEl(null);
+  }
+
   return (
   <Styled.Wrapper>
     <Styled.MainTop>
@@ -27,34 +41,93 @@ const Main = () => {
     </Styled.MainTop>
 
     <Styled.Profile>
-      <div className="profileBox">My profile
-        <div className="profileImg">
+      <Styled.ProfileBox>
+        <Styled.EditBtn>
+          <IconButton
+            size="medium"
+            aria-label="profile edit button"
+            aria-constrol="edit-btn"
+            aria-hasopoup="true"
+            onClick={handleMenu}
+            >
+              <MoreVertIcon />
+          </IconButton>
+          <Menu
+              id="edit-btn"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical:'top',
+                horiaontal:'right'
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical:'top',
+                horiaontal:'right'
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              >
+            <MenuItem onClick={handleClose}>Edit</MenuItem>
+          </Menu>
+        </Styled.EditBtn>
+
+        <Styled.ProfileImg>
           <img src="images/main/meimg.jpg" alt="my profile image" />
-          <FiCamera />
-        </div>
-        <div className="profileText">
-          <p>이름</p>
-          <p>생일</p>
-        </div>
-      </div>
+        </Styled.ProfileImg>
+        <Styled.ProfileText>
+          <p>이름:</p>
+          <p>생일:</p>
+          <p>좋아하는거:</p>
+          <p>싫어하는거:</p>
+        </Styled.ProfileText>
+      </Styled.ProfileBox>
 
-      <div className="heartImg">
-        하트이미지
-      </div>
+      <Styled.HeartImg>
+        <img src="images/main/pixel_heart.png" alt="pixel heart image" />
+      </Styled.HeartImg>
 
-      <div className="profileBox">Your Profile
-        <div className="profileImg">
+      <Styled.ProfileBox>
+        <Styled.EditBtn>
+          <IconButton
+            size="medium"
+            aria-label="profile edit button"
+            aria-constrol="edit-btn"
+            aria-hasopoup="true"
+            onClick={handleMenu}
+            >
+          <MoreVertIcon />
+        </IconButton>
+        <Menu
+            id="edit-btn"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical:'top',
+              horiaontal:'right'
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical:'top',
+              horiaontal:'right'
+            }}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+            >
+          <MenuItem onClick={handleClose}>Edit</MenuItem>
+        </Menu>
+        </Styled.EditBtn>
+        <Styled.ProfileImg>
           <img src="images/main/youimg.jpg" alt="your profile image" />
-          <FiCamera />
-        </div>
-        <div className="profileText">
-          <p>이름</p>
-          <p>생일</p>
-        </div>
-      </div>
+        </Styled.ProfileImg>
+        <Styled.ProfileText>
+          <p>이름:</p>
+          <p>생일:</p>
+          <p>좋아하는거:</p>
+          <p>싫어하는거:</p>
+        </Styled.ProfileText>
+      </Styled.ProfileBox>
     </Styled.Profile>
   </Styled.Wrapper>
   );
 };
 
-export default Main;
+export default MainSection;
