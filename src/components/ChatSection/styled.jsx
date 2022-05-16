@@ -1,12 +1,13 @@
 import styled from "styled-components";
-// import heart from "../../../public/images/main/heart.jpg";
+
+
 
 export const Container =styled.div`
 width: 100%;
 height: 785px;
 background: #f5c7e9;
 `
-
+// 탑바 시작
 export const Topbar = styled.div`
 display: flex;
 justify-content: flex-start;
@@ -25,7 +26,15 @@ margin-top: 10px;
 margin-left: 30px;
 border-radius: 50%;
 `
-// export const He = styled(heart).img;
+export const HeartImg = styled.div`
+    margin:0 15px;
+    img{
+        width:30px;
+        height: 25px;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+`
 
 export const TopFrofileYou = styled.div`
 display: flex;
@@ -35,10 +44,13 @@ height: 50px;
 width: 50px;
 height: 50px;
 margin-top: 10px;
-margin-left: 50px;
+margin-left: 20px;
 border-radius: 50%;
 `
-
+export const ChatMenuBtn = styled.div`
+text-align:right;
+`
+// 탑바 끝
 
 export const Rowbar = styled.div`
 display: flex;
