@@ -46,8 +46,8 @@ const MainSection = () => {
           <IconButton
             size="medium"
             aria-label="profile edit button"
-            aria-constrol="edit-btn"
-            aria-hasopoup="true"
+            aria-controls="edit-btn"
+            aria-haspopup="true"
             onClick={handleMenu}
             >
               <MoreVertIcon />
@@ -55,15 +55,7 @@ const MainSection = () => {
           <Menu
               id="edit-btn"
               anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical:'top',
-                horiaontal:'right'
-              }}
               keepMounted
-              transformOrigin={{
-                vertical:'top',
-                horiaontal:'right'
-              }}
               open={Boolean(anchorEl)}
               onClose={handleClose}
               >
@@ -91,24 +83,16 @@ const MainSection = () => {
           <IconButton
             size="medium"
             aria-label="profile edit button"
-            aria-constrol="edit-btn"
-            aria-hasopoup="true"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
             onClick={handleMenu}
             >
           <MoreVertIcon />
         </IconButton>
         <Menu
-            id="edit-btn"
+            id="menu-appbar"
             anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical:'top',
-              horiaontal:'right'
-            }}
             keepMounted
-            transformOrigin={{
-              vertical:'top',
-              horiaontal:'right'
-            }}
             open={Boolean(anchorEl)}
             onClose={handleClose}
             >
