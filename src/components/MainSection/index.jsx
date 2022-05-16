@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import * as Styled from "./styled";
 import { IconButton, Menu, MenuItem} from '@mui/material'
-// import { MoreVertIcon } from '@mui/icons-material';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { MoreVert } from '@mui/icons-material';
+import Modal from "./Modal";
 
 const MainSection = () => {
   /* Dday 설정 */
@@ -24,6 +24,16 @@ const MainSection = () => {
   }
   const handleClose = () => {
     setAnchorEl(null);
+  }
+
+  /* 프로필 수정 팝업창 */
+  const [modal, setModal] = useState(false);
+  const openModal = () => {
+    handleClose();
+    setModal(true);
+  }
+  const closeModal = () => {
+    setModal(false);
   }
 
   return (
@@ -50,7 +60,7 @@ const MainSection = () => {
             aria-haspopup="true"
             onClick={handleMenu}
             >
-              <MoreVertIcon />
+              <MoreVert />
           </IconButton>
           <Menu
               id="edit-btn"
@@ -59,7 +69,7 @@ const MainSection = () => {
               open={Boolean(anchorEl)}
               onClose={handleClose}
               >
-            <MenuItem onClick={handleClose}>Edit</MenuItem>
+            <MenuItem onClick={openModal}>Edit</MenuItem>
           </Menu>
         </Styled.EditBtn>
 
@@ -83,20 +93,20 @@ const MainSection = () => {
           <IconButton
             size="medium"
             aria-label="profile edit button"
-            aria-controls="menu-appbar"
+            aria-controls="edit-btn"
             aria-haspopup="true"
             onClick={handleMenu}
             >
-          <MoreVertIcon />
+          <MoreVert />
         </IconButton>
         <Menu
-            id="menu-appbar"
+            id="edit-btn"
             anchorEl={anchorEl}
             keepMounted
             open={Boolean(anchorEl)}
             onClose={handleClose}
             >
-          <MenuItem onClick={handleClose}>Edit</MenuItem>
+          <MenuItem onClick={openModal}>Edit</MenuItem>
         </Menu>
         </Styled.EditBtn>
         <Styled.ProfileImg>
@@ -110,6 +120,7 @@ const MainSection = () => {
         </Styled.ProfileText>
       </Styled.ProfileBox>
     </Styled.Profile>
+    <Modal open={modal} close={closeModal} />
   </Styled.Wrapper>
   );
 };
