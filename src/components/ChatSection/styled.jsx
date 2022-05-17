@@ -41,14 +41,16 @@ display: flex;
 background-image: url("images/main/youimg.jpg");
 width: 50px;
 height: 50px;
-width: 50px;
-height: 50px;
 margin-top: 10px;
 margin-left: 20px;
 border-radius: 50%;
 `
-export const ChatMenuBtn = styled.div`
-text-align:right;
+export const MenuBtn = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    width: 85%;
+    height: 80px;
+    padding: 20px 20px;
 `
 // 탑바 끝
 
