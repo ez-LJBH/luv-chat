@@ -3,10 +3,15 @@ import * as Styled from "./styled";
 import React, { useState } from "react";
 
 import axios from "axios";
+import { useCallback } from "react";
 import { useEffect } from "react";
 
 const GalleryList = () => {
   const [galleryList, setGalleryList] = useState([]);
+
+  const clickItem = useCallback(() => {
+    alert("이미지 클릭");
+  }, []);
 
   useEffect(() => {
     (async function loadData() {
@@ -20,9 +25,9 @@ const GalleryList = () => {
       {galleryList.length > 0 &&
         galleryList.map((gallery, index) => {
           return (
-            <div key={gallery.id}>
+            <Styled.GalleryItem key={gallery.id} onClick={clickItem}>
               <img src={gallery.imgUrl} alt={gallery.place} />
-            </div>
+            </Styled.GalleryItem>
           );
         })}
     </Styled.Container>
