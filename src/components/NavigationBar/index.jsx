@@ -23,7 +23,7 @@ const NavigationBar = () => {
   return (
     <Styled.Wrapper>
       <NavigationList>
-        <NavigationItem>
+        <NavigationItem page="/">
           <div>
             <BsPersonCircle />
           </div>
@@ -31,19 +31,19 @@ const NavigationBar = () => {
         </NavigationItem>
       </NavigationList>
       <NavigationList>
-        <NavigationItem>
+        <NavigationItem page="/calendar">
           <div>
             <BsFillCalendarDateFill />
           </div>
           <div>Calendar</div>
         </NavigationItem>
-        <NavigationItem>
+        <NavigationItem page="/gallery">
           <div>
             <BsFillCameraFill />
           </div>
           <div>Gallery</div>
         </NavigationItem>
-        <NavigationItem>
+        <NavigationItem page="/chat">
           <div>
             <BsFillChatTextFill />
           </div>

@@ -8,6 +8,9 @@ export const Wrapper = styled.div`
   align-items: center;
   border-radius: 5px;
 
+  background-color: ${(props) => (props.isActivate ? "#5e5e5e" : "")};
+  color: ${(props) => (props.isActivate ? "#eee" : "")};
+
   &:hover {
     cursor: pointer;
     background-color: #5e5e5e;

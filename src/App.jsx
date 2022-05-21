@@ -12,18 +12,18 @@ import NavigationBar from "./components/NavigationBar";
 
 function App() {
   return (
-    <div style={{ display: "flex" }}>
-      <NavigationBar />
-      <div
-        style={{
-          width: "calc(100% - 200px)",
-          position: "absolute",
-          left: "200px",
-        }}
-      >
-        <Header />
-        <Contents>
-          <BrowserRouter>
+    <BrowserRouter>
+      <div style={{ display: "flex" }}>
+        <NavigationBar />
+        <div
+          style={{
+            width: "calc(100% - 200px)",
+            position: "absolute",
+            left: "200px",
+          }}
+        >
+          <Header />
+          <Contents>
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/calendar" element={<Calendar />} />
@@ -32,10 +32,10 @@ function App() {
               <Route path="/join" element={<Join />} />
               <Route path="/login" element={<Login />} />
             </Routes>
-          </BrowserRouter>
-        </Contents>
+          </Contents>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
