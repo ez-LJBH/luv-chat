@@ -14,7 +14,13 @@ function App() {
   return (
     <div style={{ display: "flex" }}>
       <NavigationBar />
-      <div style={{ width: "calc(100% - 200px)" }}>
+      <div
+        style={{
+          width: "calc(100% - 200px)",
+          position: "absolute",
+          left: "200px",
+        }}
+      >
         <Header />
         <Contents>
           <BrowserRouter>

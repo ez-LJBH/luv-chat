@@ -1,5 +1,15 @@
 import * as Styled from "./styled";
 
+import {
+  BsFillCalendarDateFill,
+  BsFillCameraFill,
+  BsFillChatTextFill,
+  BsPersonCircle,
+} from "react-icons/bs";
+
+import NavigationItem from "./NavigationList/NavigationItem";
+import NavigationList from "./NavigationList";
+import Profile from "../Profile";
 import React from "react";
 
 const NavigationBar = () => {
@@ -10,7 +20,38 @@ const NavigationBar = () => {
     return <></>;
   }
 
-  return <Styled.Wrapper>NavigationBar</Styled.Wrapper>;
+  return (
+    <Styled.Wrapper>
+      <NavigationList>
+        <NavigationItem>
+          <div>
+            <BsPersonCircle />
+          </div>
+          <Profile />
+        </NavigationItem>
+      </NavigationList>
+      <NavigationList>
+        <NavigationItem>
+          <div>
+            <BsFillCalendarDateFill />
+          </div>
+          <div>Calendar</div>
+        </NavigationItem>
+        <NavigationItem>
+          <div>
+            <BsFillCameraFill />
+          </div>
+          <div>Gallery</div>
+        </NavigationItem>
+        <NavigationItem>
+          <div>
+            <BsFillChatTextFill />
+          </div>
+          <div>Chat</div>
+        </NavigationItem>
+      </NavigationList>
+    </Styled.Wrapper>
+  );
 };
 
 export default NavigationBar;
