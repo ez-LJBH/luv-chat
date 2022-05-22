@@ -4,12 +4,11 @@ import {
   BsFillCalendarDateFill,
   BsFillCameraFill,
   BsFillChatTextFill,
-  BsPersonCircle,
+  BsFillHouseFill,
 } from "react-icons/bs";
 
 import NavigationItem from "./NavigationList/NavigationItem";
 import NavigationList from "./NavigationList";
-import Profile from "../Profile";
 import React from "react";
 
 const NavigationBar = () => {
@@ -22,12 +21,19 @@ const NavigationBar = () => {
 
   return (
     <Styled.Wrapper>
+      <Styled.TopProfileContainer>
+        <Styled.TopProfileMe />
+        <Styled.HeartImg>
+          <img src="images/main/pixel_heart.png" alt="heart" />
+        </Styled.HeartImg>
+        <Styled.TopProfileYou />
+      </Styled.TopProfileContainer>
       <NavigationList>
         <NavigationItem page="/">
           <div>
-            <BsPersonCircle />
+            <BsFillHouseFill />
           </div>
-          <Profile />
+          <div>Home</div>
         </NavigationItem>
       </NavigationList>
       <NavigationList>
