@@ -1,7 +1,8 @@
-import styledComponents from "styled-components";
+import styled from "styled-components";
 
-export const Wrapper = styledComponents.div`
+export const Wrapper = styled.div`
   width: 100%;
-  height: 150px;
+  height: 64px;
   border-bottom: 1px solid #333;
+  position: fixed;
 `;
