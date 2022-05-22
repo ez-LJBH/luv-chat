@@ -13,6 +13,9 @@ const NavigationItem = ({ children, page }) => {
   }, [navigate, page]);
 
   useEffect(() => {
+    // 페이지 이동 후 스크롤 최상단으로 이동 (x, y)
+    window.scrollTo(0, 0);
+
     if (location.pathname === page) {
       setIsActivate(true);
     } else {
