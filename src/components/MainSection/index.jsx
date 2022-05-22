@@ -19,6 +19,9 @@ const MainSection = () => {
   const passedTime = nowDate.getTime() - loveDate.getTime() + KoreaTime;
   const passedDay = Math.round(passedTime / (24 * 60 * 60 * 1000));
 
+  /* 프로필 사진 */
+
+
   /* 프로필 수정 버튼 */
   const [anchorEl, setAnchorEl] = useState(null);
   const handleMenu = (event) => {
@@ -78,7 +81,7 @@ const MainSection = () => {
           </Styled.EditBtn>
 
           <Styled.ProfileImg>
-            <img src="images/main/me_img.jpg" alt="my profile" />
+            <img src="images/main/profile_me.jpg" alt="my profile" />
           </Styled.ProfileImg>
           <Styled.ProfileText>
             <p>이름:</p>
@@ -114,7 +117,7 @@ const MainSection = () => {
             </Menu>
           </Styled.EditBtn>
           <Styled.ProfileImg>
-            <img src="images/main/you_img.jpg" alt="your profile" />
+            <img src="images/main/profile_you.jpg" alt="your profile" />
           </Styled.ProfileImg>
           <Styled.ProfileText>
             <p>이름:</p>

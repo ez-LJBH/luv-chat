@@ -38,7 +38,7 @@ export const ProfileBox = styled.div`
     border:1px solid #000;
     width:250px;
     text-align:center;
-    border-radius:8px;
+    /* border-radius:8px; */
     margin:15px 0;
     background:#fff;
 `
