@@ -41,6 +41,13 @@ const MainSection = () => {
     setModal(false);
   };
 
+  /* Modal의 데이터 받기 */
+  const [inputVal, setInputVal] = useState('');
+
+  const onFormSubmit = (val) => {
+    console.log(val);
+  } 
+
   return (
     <Styled.Wrapper>
       <Styled.MainTop>
@@ -84,7 +91,7 @@ const MainSection = () => {
             <img src="images/main/profile_me.jpg" alt="my profile" />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>이름:</p>
+            <p>이름:{inputVal}</p>
             <p>생일:</p>
             <p>좋아하는거:</p>
             <p>싫어하는거:</p>
@@ -127,7 +134,7 @@ const MainSection = () => {
           </Styled.ProfileText>
         </Styled.ProfileBox>
       </Styled.Profile>
-      <Modal open={modal} close={closeModal} />
+      <Modal open={modal} close={closeModal} setInputVal={setInputVal} />
     </Styled.Wrapper>
   );
 };
