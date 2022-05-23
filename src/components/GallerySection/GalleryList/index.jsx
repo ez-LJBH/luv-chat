@@ -2,13 +2,13 @@ import * as Styled from "./styled";
 
 import React, { useState } from "react";
 
+import { Lightbox } from "react-modal-image";
 import axios from "axios";
 import { useCallback } from "react";
 import { useEffect } from "react";
 
 const GalleryList = () => {
   const [galleryList, setGalleryList] = useState([]);
-
   const clickItem = useCallback(() => {
     alert("이미지 클릭");
   }, []);

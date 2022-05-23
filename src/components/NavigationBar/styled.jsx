@@ -17,7 +17,7 @@ export const TopProfileContainer = styled.div`
 `;
 
 export const TopProfileMe = styled.div`
-  background-image: url("images/main/me_img.jpg");
+  background-image: url("images/main/profile_me.jpg");
   background-size: cover;
   width: 60px;
   height: 60px;
@@ -33,7 +33,7 @@ export const HeartImg = styled.div`
 `;
 
 export const TopProfileYou = styled.div`
-  background-image: url("images/main/you_img.jpg");
+  background-image: url("images/main/profile_you.jpg");
   background-size: cover;
   width: 60px;
   height: 60px;

@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   padding: 8px;
   display: flex;
   align-items: center;
+  z-index: 10;
 `;
 
 export const Logo = styled.div`
