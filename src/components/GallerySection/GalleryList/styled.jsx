@@ -8,13 +8,21 @@ export const Container = styled.div`
 
 export const GalleryItem = styled.div`
   width: calc(100% / 4 - 5px);
-  height: 500px;
+  /* height: 350px;  */
   margin-top: 20px;
   padding-left: 20px;
 
-  &:hover {
-    opacity: 0.8;
-    cursor: pointer;
+  & > div {
+    width: 100%;
+    height: 350px;
+    & > img {
+      width: 100%;
+      height: 100%;
+    }
+    &:hover > img {
+      opacity: 0.8;
+      cursor: pointer;
+    }
   }
 
   & > img {
@@ -22,3 +30,5 @@ export const GalleryItem = styled.div`
     height: 100%;
   }
 `;
+
+export const ModalImg = styled.div``;

@@ -2,16 +2,12 @@ import * as Styled from "./styled";
 
 import React, { useState } from "react";
 
-import { Lightbox } from "react-modal-image";
+import ModalImage from "react-modal-image";
 import axios from "axios";
-import { useCallback } from "react";
 import { useEffect } from "react";
 
 const GalleryList = () => {
   const [galleryList, setGalleryList] = useState([]);
-  const clickItem = useCallback(() => {
-    alert("이미지 클릭");
-  }, []);
 
   useEffect(() => {
     (async function loadData() {
@@ -25,8 +21,12 @@ const GalleryList = () => {
       {galleryList.length > 0 &&
         galleryList.map((gallery, index) => {
           return (
-            <Styled.GalleryItem key={gallery.id} onClick={clickItem}>
-              <img src={gallery.imgUrl} alt={gallery.place} />
+            <Styled.GalleryItem key={gallery.id}>
+              <ModalImage
+                small={gallery.imgUrl}
+                large={gallery.imgUrl}
+                hideZoom
+              />
             </Styled.GalleryItem>
           );
         })}
