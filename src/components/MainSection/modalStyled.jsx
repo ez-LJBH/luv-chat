@@ -5,8 +5,9 @@ export const Popup = styled.form`
     width:350px;
     height:600px;
     position:absolute;
-    top:calc(50% - 175px);
-    left:calc(70%);
+    top:30%;
+    left:50%;
+    transform:translateX(-50%);
     background:#fff;
     box-shadow:0 0 20px rgba(0,0,0,.5);
     border-radius:10px;

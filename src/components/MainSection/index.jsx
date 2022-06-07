@@ -1,12 +1,13 @@
 import * as Styled from "./styled";
-
 import { IconButton, Menu, MenuItem } from "@mui/material";
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
 import Modal from "./Modal";
 import { MoreVert } from "@mui/icons-material";
 
 const MainSection = () => {
+  const [profileData, setProfileData] = useState([]);
+
   /* Dday 설정 */
   const loveDate = new Date("2022-05-04");
   const loveYear = loveDate.getFullYear();
@@ -19,8 +20,31 @@ const MainSection = () => {
   const passedTime = nowDate.getTime() - loveDate.getTime() + KoreaTime;
   const passedDay = Math.round(passedTime / (24 * 60 * 60 * 1000));
 
-  /* 프로필 사진 */
+  /* 프로필 데이터 */
+  /* 작성중
+  useEffect(()=>{
+    const getProfileData = async () => {
+      await axios.get('/data/modal.json')
+      .then( res => setProfileData(...profileData, res.data) );
+    }
+    getProfileData();
+  }, []);
+  console.log(profileData); //불러오기 전에 console이 먼저 찍혀서 undefined 출력됨
 
+  let profileDataList = profileData.map( data => {
+    <>
+      <Styled.ProfileImg>
+          <img src={data.id} alt={profileData.name} />
+      </Styled.ProfileImg>
+      <Styled.ProfileText>
+          <p>이름:{profileData.name}</p>
+          <p>생일:{profileData.birth}</p>
+          <p>좋아하는거:{profileData.like}</p>
+          <p>싫어하는거:{profileData.dislike}</p>
+      </Styled.ProfileText>
+    </>
+  })
+  */
 
   /* 프로필 수정 버튼 */
   const [anchorEl, setAnchorEl] = useState(null);
