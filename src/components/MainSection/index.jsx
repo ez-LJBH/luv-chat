@@ -21,28 +21,29 @@ const MainSection = () => {
   const passedDay = Math.round(passedTime / (24 * 60 * 60 * 1000));
 
   /* 프로필 데이터 */
-  /* 작성중
   useEffect(()=>{
     const getProfileData = async () => {
-      await axios.get('/data/modal.json')
+      const info = await axios.get('/data/modal.json')
       .then( res => setProfileData(...profileData, res.data) );
     }
     getProfileData();
   }, []);
   console.log(profileData); //불러오기 전에 console이 먼저 찍혀서 undefined 출력됨
 
+  /* axios 불러오는 속도 차이때문에 오류나는 것 같은데..
   let profileDataList = profileData.map( data => {
-    <>
+    // console.log(data);
+    <div key={data.id}>
       <Styled.ProfileImg>
-          <img src={data.id} alt={profileData.name} />
-      </Styled.ProfileImg>
-      <Styled.ProfileText>
-          <p>이름:{profileData.name}</p>
-          <p>생일:{profileData.birth}</p>
-          <p>좋아하는거:{profileData.like}</p>
-          <p>싫어하는거:{profileData.dislike}</p>
-      </Styled.ProfileText>
-    </>
+            <img src={data.profile_img} alt={data.name} />
+          </Styled.ProfileImg>
+          <Styled.ProfileText>
+            <p>이름:{data.name}</p>
+            <p>생일:{data.birth}</p>
+            <p>좋아하는거:{data.like}</p>
+            <p>싫어하는거:{data.dislike}</p>
+          </Styled.ProfileText>
+    </div>
   })
   */
 

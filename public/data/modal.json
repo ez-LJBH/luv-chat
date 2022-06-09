@@ -1,4 +1,4 @@
 [
-    {"id":1, "name":"김사람", "birth":"1990.01.01", "like":"좋아하는거", "dislike":"싫어하는거", "profile_img":"/images/profile_me.jpg"},
+    {"id":1, "name":"김사람", "birth":"1990.01.01", "like":"좋아하는거", "dislike":"싫어하는거", "profile_img":"/images/main/profile_me.jpg"},
     {"id":2, "name":"이사람", "birth":"1990.01.01", "like":"좋아하는거", "dislike":"싫어하는거", "profile_img":"/images/profile_you.jpg"}
 ]

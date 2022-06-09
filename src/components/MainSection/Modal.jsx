@@ -48,13 +48,18 @@ const Modal = ({open, close, setInputVal}) => {
         setInputCategoryValue(e.target.value);
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        close();
+    }
+
   return (
     <div className={open ? 'openModal modal' : "modal"}>
         {open ? (
-            <Styled.Popup id="profileEditForm">
+            <Styled.Popup id="profileEditForm" onSubmit={handleSubmit}>
                 <Styled.ModalHeader>
                     <h4>프로필 수정</h4>
-                    <button type="submit" form="profileEditForm">저장</button>
+                    <button type="submit">저장</button>
                 </Styled.ModalHeader>
                 <Styled.ModalBody>
                     <img src="images/main/profile_me.jpg" alt="profile img" />
