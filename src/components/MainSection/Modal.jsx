@@ -80,16 +80,17 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                     width:'90%'
                                 }}
                                 value={inputTitle.name}
-                                onChange={(e) => handleChange(e)}
+                                // onChange={(e) => handleChange(e)}
                             />
                         </Styled.ProfileCategoryTitle>
                         <Input
+                            name="name"
                             sx={{
                                 width:'98%',
                                 marginLeft:'7px',
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
-                            onChange={e=>getInputTitle(e)}
+                            onChange={e=>handleChange(e)}
                             />
                     </Styled.ProfileCategoryBox>
                     <Styled.ProfileCategoryBox>
@@ -107,16 +108,17 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                     width:'90%'
                                 }}
                                 value={inputTitle.birth}
-                                onChange={(e) => handleChange(e)}
+                                // onChange={(e) => handleChange(e)}
                             />
                         </Styled.ProfileCategoryTitle>
                         <Input
+                            name="birth"
                             sx={{
                                 width:'98%',
                                 marginLeft:'7px',
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
-                            onChange={e=>getInputTitle(e)}
+                            onChange={e=>handleChange(e)}
                             />
                     </Styled.ProfileCategoryBox>
                     <Styled.ProfileCategoryBox>
@@ -134,16 +136,17 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                     width:'90%'
                                 }}
                                 value={inputTitle.like}
-                                onChange={(e) => handleChange(e)}
+                                // onChange={(e) => handleChange(e)}
                             />
                         </Styled.ProfileCategoryTitle>
                         <Input
+                            name="like"
                             sx={{
                                 width:'98%',
                                 marginLeft:'7px',
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
-                            onChange={e=>getInputTitle(e)}
+                            onChange={e=>handleChange(e)}
                             />
                     </Styled.ProfileCategoryBox>
                     <Styled.ProfileCategoryBox>
@@ -161,16 +164,17 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                     width:'90%'
                                 }}
                                 value={inputTitle.dislike}
-                                onChange={(e) => handleChange(e)}
+                                // onChange={(e) => handleChange(e)}
                             />
                         </Styled.ProfileCategoryTitle>
                         <Input
+                            name="dislike"
                             sx={{
                                 width:'98%',
                                 marginLeft:'7px',
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
-                            onChange={e=>getInputTitle(e)}
+                            onChange={e=>handleChange(e)}
                             />
                     </Styled.ProfileCategoryBox>
                 </Styled.ModalBody>

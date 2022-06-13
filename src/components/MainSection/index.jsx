@@ -126,9 +126,9 @@ const MainSection = () => {
           </Styled.ProfileImg>
           <Styled.ProfileText>
             <p>이름:{inputValue.name}</p>
-            <p>생일:</p>
-            <p>좋아하는거:</p>
-            <p>싫어하는거:</p>
+            <p>생일:{inputValue.birth}</p>
+            <p>좋아하는거:{inputValue.like}</p>
+            <p>싫어하는거:{inputValue.dislike}</p>
           </Styled.ProfileText>
         </Styled.ProfileBox>
 
