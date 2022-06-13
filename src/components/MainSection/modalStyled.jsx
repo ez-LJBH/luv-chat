@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Popup = styled.form`
     font-family: 'Gowun Dodum', sans-serif;
     width:350px;
-    height:600px;
+    height:630px;
     position:absolute;
     top:30%;
     left:50%;

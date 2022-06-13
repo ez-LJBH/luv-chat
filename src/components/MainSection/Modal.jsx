@@ -3,12 +3,11 @@ import * as Styled from "./modalStyled";
 import { Add } from '@mui/icons-material';
 import { IconButton, Input } from '@mui/material'
 
-const Modal = ({open, close, setInputVal}) => {
-    const [inputCategoryValue, setInputCategoryValue] = useState('');
-
-    const getInputValue = (e) => {
-        setInputVal(e.target.value);
-        console.log(e.target.value);
+const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitle}) => {
+    const getInputTitle = (e) => {
+        let newInputTitle = {...inputTitle};
+        newInputTitle[e.target.name] = e.target.value;
+        setInputTitle(newInputTitle);
     }
     
 
@@ -29,11 +28,11 @@ const Modal = ({open, close, setInputVal}) => {
                                     fontFamily:"'Gowun Dodum', sans-serif",
                                     width:'90%'
                                 }}
-                                value={inputCategoryValue}
+                                value={inputValue}
                                 onChange={(e) => handleChange(e)}
                             />
                         </Styled.ProfileCategoryTitle>
-                        {inputCategoryValue && <Input
+                        {inputValue && <Input
                                                     sx={{
                                                         width:'98%',
                                                         marginLeft:'7px',
@@ -45,7 +44,10 @@ const Modal = ({open, close, setInputVal}) => {
     }
 
     const handleChange = (e) => {
-        setInputCategoryValue(e.target.value);
+        let newInputValue = {...inputValue};
+        newInputValue[e.target.name] = e.target.value;
+        setInputValue(newInputValue);
+        console.log(newInputValue);
     }
 
     const handleSubmit = (e) => {
@@ -70,26 +72,106 @@ const Modal = ({open, close, setInputVal}) => {
                             </IconButton>
                             <Input 
                                 type="text"
-                                name="addInput"
+                                name="name"
                                 sx={{
                                     border:'none',
                                     background:'#fff',
                                     fontFamily:"'Gowun Dodum', sans-serif",
                                     width:'90%'
                                 }}
-                                value={inputCategoryValue}
+                                value={inputTitle.name}
                                 onChange={(e) => handleChange(e)}
                             />
                         </Styled.ProfileCategoryTitle>
-                        {inputCategoryValue && <Input
-                                                    sx={{
-                                                        width:'98%',
-                                                        marginLeft:'7px',
-                                                        fontFamily:"'Gowun Dodum', sans-serif"
-                                                    }}
-                                                    onChange={e=>getInputValue(e)}
-                                                    />
-                        }
+                        <Input
+                            sx={{
+                                width:'98%',
+                                marginLeft:'7px',
+                                fontFamily:"'Gowun Dodum', sans-serif"
+                            }}
+                            onChange={e=>getInputTitle(e)}
+                            />
+                    </Styled.ProfileCategoryBox>
+                    <Styled.ProfileCategoryBox>
+                        <Styled.ProfileCategoryTitle>
+                            <IconButton sx={{padding:'0 4px'}} onClick={(e)=>createInputBox()}>
+                                <Add />
+                            </IconButton>
+                            <Input 
+                                type="text"
+                                name="birth"
+                                sx={{
+                                    border:'none',
+                                    background:'#fff',
+                                    fontFamily:"'Gowun Dodum', sans-serif",
+                                    width:'90%'
+                                }}
+                                value={inputTitle.birth}
+                                onChange={(e) => handleChange(e)}
+                            />
+                        </Styled.ProfileCategoryTitle>
+                        <Input
+                            sx={{
+                                width:'98%',
+                                marginLeft:'7px',
+                                fontFamily:"'Gowun Dodum', sans-serif"
+                            }}
+                            onChange={e=>getInputTitle(e)}
+                            />
+                    </Styled.ProfileCategoryBox>
+                    <Styled.ProfileCategoryBox>
+                        <Styled.ProfileCategoryTitle>
+                            <IconButton sx={{padding:'0 4px'}} onClick={(e)=>createInputBox()}>
+                                <Add />
+                            </IconButton>
+                            <Input 
+                                type="text"
+                                name="like"
+                                sx={{
+                                    border:'none',
+                                    background:'#fff',
+                                    fontFamily:"'Gowun Dodum', sans-serif",
+                                    width:'90%'
+                                }}
+                                value={inputTitle.like}
+                                onChange={(e) => handleChange(e)}
+                            />
+                        </Styled.ProfileCategoryTitle>
+                        <Input
+                            sx={{
+                                width:'98%',
+                                marginLeft:'7px',
+                                fontFamily:"'Gowun Dodum', sans-serif"
+                            }}
+                            onChange={e=>getInputTitle(e)}
+                            />
+                    </Styled.ProfileCategoryBox>
+                    <Styled.ProfileCategoryBox>
+                        <Styled.ProfileCategoryTitle>
+                            <IconButton sx={{padding:'0 4px'}} onClick={(e)=>createInputBox()}>
+                                <Add />
+                            </IconButton>
+                            <Input 
+                                type="text"
+                                name="dislike"
+                                sx={{
+                                    border:'none',
+                                    background:'#fff',
+                                    fontFamily:"'Gowun Dodum', sans-serif",
+                                    width:'90%'
+                                }}
+                                value={inputTitle.dislike}
+                                onChange={(e) => handleChange(e)}
+                            />
+                        </Styled.ProfileCategoryTitle>
+                        <Input
+                            sx={{
+                                width:'98%',
+                                marginLeft:'7px',
+                                fontFamily:"'Gowun Dodum', sans-serif"
+                            }}
+                            onChange={e=>getInputTitle(e)}
+                            />
                     </Styled.ProfileCategoryBox>
                 </Styled.ModalBody>
             </Styled.Popup>

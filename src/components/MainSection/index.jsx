@@ -6,6 +6,13 @@ import Modal from "./Modal";
 import { MoreVert } from "@mui/icons-material";
 
 const MainSection = () => {
+  const [inputTitle, setInputTitle] = useState({
+    name:'이름',
+    birth:'생일',
+    like:'좋아하는거',
+    dislike:'싫어하는거'
+  });
+
   const [profileData, setProfileData] = useState([]);
 
   /* Dday 설정 */
@@ -28,7 +35,7 @@ const MainSection = () => {
     }
     getProfileData();
   }, []);
-  console.log(profileData); //불러오기 전에 console이 먼저 찍혀서 undefined 출력됨
+  // console.log(profileData); //불러오기 전에 console이 먼저 찍혀서 undefined 출력됨
 
   /* axios 불러오는 속도 차이때문에 오류나는 것 같은데..
   let profileDataList = profileData.map( data => {
@@ -67,11 +74,13 @@ const MainSection = () => {
   };
 
   /* Modal의 데이터 받기 */
-  const [inputVal, setInputVal] = useState('');
+  const [inputValue, setInputValue] = useState({
+    name:'',
+    birth:'',
+    like:'',
+    dislike:''
+  });
 
-  const onFormSubmit = (val) => {
-    console.log(val);
-  } 
 
   return (
     <Styled.Wrapper>
@@ -116,7 +125,7 @@ const MainSection = () => {
             <img src="images/main/profile_me.jpg" alt="my profile" />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>이름:{inputVal}</p>
+            <p>이름:{inputValue.name}</p>
             <p>생일:</p>
             <p>좋아하는거:</p>
             <p>싫어하는거:</p>
@@ -159,7 +168,7 @@ const MainSection = () => {
           </Styled.ProfileText>
         </Styled.ProfileBox>
       </Styled.Profile>
-      <Modal open={modal} close={closeModal} setInputVal={setInputVal} />
+      <Modal open={modal} close={closeModal} inputValue={inputValue} setInputValue={setInputValue} inputTitle={inputTitle} setInputTitle={setInputTitle} />
     </Styled.Wrapper>
   );
 };
