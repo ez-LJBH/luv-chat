@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as Styled from "./modalStyled";
-import { Add } from '@mui/icons-material';
+import { Add, FileUpload } from '@mui/icons-material';
 import { IconButton, Input } from '@mui/material'
 
 const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitle}) => {
@@ -13,9 +13,10 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
 
     const createInputBox = (e) => {
         //새 input 만들기
+        /*
         return(
-        <Styled.ProfileCategoryBox>
-                        <Styled.ProfileCategoryTitle>
+        <Styled.ProfileInputBox>
+                        <Styled.ProfileInputTitle>
                             <IconButton sx={{padding:'0 4px'}} onClick={(e)=>createInputBox()}>
                                 <Add />
                             </IconButton>
@@ -31,7 +32,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 value={inputValue}
                                 onChange={(e) => handleChange(e)}
                             />
-                        </Styled.ProfileCategoryTitle>
+                        </Styled.ProfileInputTitle>
                         {inputValue && <Input
                                                     sx={{
                                                         width:'98%',
@@ -39,8 +40,8 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                                         fontFamily:"'Gowun Dodum', sans-serif"
                                                     }} />
                         }
-                    </Styled.ProfileCategoryBox>
-        )
+                    </Styled.ProfileInputBox>
+        )*/
     }
 
     const handleChange = (e) => {
@@ -64,9 +65,13 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                     <button type="submit">저장</button>
                 </Styled.ModalHeader>
                 <Styled.ModalBody>
-                    <img src="images/main/profile_me.jpg" alt="profile img" />
-                    <Styled.ProfileCategoryBox>
-                        <Styled.ProfileCategoryTitle>
+                    <Styled.ProfileImgBox>
+                        <img src={inputValue[1].profile_img} alt={inputValue[1].name} />
+                        {/* 사진 업로드 아이콘(input[type=file]) 위치 */}
+                    </Styled.ProfileImgBox>
+                    
+                    <Styled.ProfileInputBox>
+                        <Styled.ProfileInputTitle>
                             <IconButton sx={{padding:'0 4px'}} onClick={(e)=>createInputBox()}>
                                 <Add />
                             </IconButton>
@@ -82,7 +87,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 value={inputTitle.name}
                                 // onChange={(e) => handleChange(e)}
                             />
-                        </Styled.ProfileCategoryTitle>
+                        </Styled.ProfileInputTitle>
                         <Input
                             name="name"
                             sx={{
@@ -91,10 +96,11 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleChange(e)}
+                            value={inputValue[1].name}
                             />
-                    </Styled.ProfileCategoryBox>
-                    <Styled.ProfileCategoryBox>
-                        <Styled.ProfileCategoryTitle>
+                    </Styled.ProfileInputBox>
+                    <Styled.ProfileInputBox>
+                        <Styled.ProfileInputTitle>
                             <IconButton sx={{padding:'0 4px'}} onClick={(e)=>createInputBox()}>
                                 <Add />
                             </IconButton>
@@ -110,7 +116,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 value={inputTitle.birth}
                                 // onChange={(e) => handleChange(e)}
                             />
-                        </Styled.ProfileCategoryTitle>
+                        </Styled.ProfileInputTitle>
                         <Input
                             name="birth"
                             sx={{
@@ -119,10 +125,11 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleChange(e)}
+                            value={inputValue[1].birth}
                             />
-                    </Styled.ProfileCategoryBox>
-                    <Styled.ProfileCategoryBox>
-                        <Styled.ProfileCategoryTitle>
+                    </Styled.ProfileInputBox>
+                    <Styled.ProfileInputBox>
+                        <Styled.ProfileInputTitle>
                             <IconButton sx={{padding:'0 4px'}} onClick={(e)=>createInputBox()}>
                                 <Add />
                             </IconButton>
@@ -138,7 +145,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 value={inputTitle.like}
                                 // onChange={(e) => handleChange(e)}
                             />
-                        </Styled.ProfileCategoryTitle>
+                        </Styled.ProfileInputTitle>
                         <Input
                             name="like"
                             sx={{
@@ -147,10 +154,11 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleChange(e)}
+                            value={inputValue[1].like}
                             />
-                    </Styled.ProfileCategoryBox>
-                    <Styled.ProfileCategoryBox>
-                        <Styled.ProfileCategoryTitle>
+                    </Styled.ProfileInputBox>
+                    <Styled.ProfileInputBox>
+                        <Styled.ProfileInputTitle>
                             <IconButton sx={{padding:'0 4px'}} onClick={(e)=>createInputBox()}>
                                 <Add />
                             </IconButton>
@@ -166,7 +174,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 value={inputTitle.dislike}
                                 // onChange={(e) => handleChange(e)}
                             />
-                        </Styled.ProfileCategoryTitle>
+                        </Styled.ProfileInputTitle>
                         <Input
                             name="dislike"
                             sx={{
@@ -175,8 +183,9 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleChange(e)}
+                            value={inputValue[1].dislike}
                             />
-                    </Styled.ProfileCategoryBox>
+                    </Styled.ProfileInputBox>
                 </Styled.ModalBody>
             </Styled.Popup>
         ) : null}

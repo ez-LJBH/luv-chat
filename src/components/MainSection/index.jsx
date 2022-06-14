@@ -27,15 +27,15 @@ const MainSection = () => {
   const passedTime = nowDate.getTime() - loveDate.getTime() + KoreaTime;
   const passedDay = Math.round(passedTime / (24 * 60 * 60 * 1000));
 
-  /* 프로필 데이터 */
-  useEffect(()=>{
-    const getProfileData = async () => {
-      const info = await axios.get('/data/modal.json')
-      .then( res => setProfileData(...profileData, res.data) );
-    }
-    getProfileData();
-  }, []);
-  // console.log(profileData); //불러오기 전에 console이 먼저 찍혀서 undefined 출력됨
+  // /* 프로필 데이터 */
+  // useEffect(()=>{
+  //   const getProfileData = async () => {
+  //     const info = await axios.get('/data/modal.json')
+  //     .then( res => setProfileData(...profileData, res.data) );
+  //   }
+  //   getProfileData();
+  // }, []);
+  // // console.log(profileData); //불러오기 전에 console이 먼저 찍혀서 undefined 출력됨
 
   /* axios 불러오는 속도 차이때문에 오류나는 것 같은데..
   let profileDataList = profileData.map( data => {
@@ -74,12 +74,28 @@ const MainSection = () => {
   };
 
   /* Modal의 데이터 받기 */
-  const [inputValue, setInputValue] = useState({
-    name:'',
-    birth:'',
-    like:'',
-    dislike:''
-  });
+  const [inputValue, setInputValue] = useState([
+    {
+      name:'',
+      birth:'',
+      like:'',
+      dislike:''
+    },
+    {
+      name:'김사람',
+      birth:'1990.01.01',
+      like:'독서, 게임, 카페투어',
+      dislike:'해산물, 여름',
+      profile_img:'/images/main/profile_me.jpg'
+    },
+    {
+      name:'이사람',
+      birth:'1990.12.31',
+      like:'게임, 요리',
+      dislike:'먼지, 초콜릿',
+      profile_img:'/images/main/profile_you.jpg'
+    }
+  ]);
 
 
   return (
@@ -125,10 +141,10 @@ const MainSection = () => {
             <img src="images/main/profile_me.jpg" alt="my profile" />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>이름:{inputValue.name}</p>
-            <p>생일:{inputValue.birth}</p>
-            <p>좋아하는거:{inputValue.like}</p>
-            <p>싫어하는거:{inputValue.dislike}</p>
+            <p>이름:{inputValue[1].name}</p>
+            <p>생일:{inputValue[1].birth}</p>
+            <p>좋아하는거:{inputValue[1].like}</p>
+            <p>싫어하는거:{inputValue[1].dislike}</p>
           </Styled.ProfileText>
         </Styled.ProfileBox>
 
@@ -161,10 +177,10 @@ const MainSection = () => {
             <img src="images/main/profile_you.jpg" alt="your profile" />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>이름:</p>
-            <p>생일:</p>
-            <p>좋아하는거:</p>
-            <p>싫어하는거:</p>
+          <p>이름:{inputValue[2].name}</p>
+            <p>생일:{inputValue[2].birth}</p>
+            <p>좋아하는거:{inputValue[2].like}</p>
+            <p>싫어하는거:{inputValue[2].dislike}</p>
           </Styled.ProfileText>
         </Styled.ProfileBox>
       </Styled.Profile>

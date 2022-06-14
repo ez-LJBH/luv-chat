@@ -47,11 +47,14 @@ export const ModalBody = styled.div`
         margin:15px auto; 
     }
 `
-export const ProfileCategoryBox = styled.div`
+export const ProfileImgBox = styled.div`
+    position:relative;
+`
+export const ProfileInputBox = styled.div`
     width:90%;
     margin:15px auto;
 `
-export const ProfileCategoryTitle = styled.div`
+export const ProfileInputTitle = styled.div`
     display:flex;
     justify-content:flex-start;
     width:100%;
