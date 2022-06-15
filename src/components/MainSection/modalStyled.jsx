@@ -49,6 +49,14 @@ export const ModalBody = styled.div`
 `
 export const ProfileImgBox = styled.div`
     position:relative;
+    img{
+        border-radius: 50%;
+        display: block;
+        margin: 15px auto;
+        width:200px;
+        height:200px;
+        object-fit:cover;
+    }
 `
 export const ProfileInputBox = styled.div`
     width:90%;

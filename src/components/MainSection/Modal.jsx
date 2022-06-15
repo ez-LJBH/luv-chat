@@ -1,14 +1,34 @@
-import React from 'react'
+import React, {useState, useRef} from 'react'
 import * as Styled from "./modalStyled";
 import { Add, FileUpload } from '@mui/icons-material';
 import { IconButton, Input } from '@mui/material'
 
 const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitle}) => {
-    const getInputTitle = (e) => {
-        let newInputTitle = {...inputTitle};
-        newInputTitle[e.target.name] = e.target.value;
-        setInputTitle(newInputTitle);
+
+    /* 프로필 이미지 업로드 */
+    const [profileImg, setProfileImg] = useState(inputValue[1].profile_img);
+    const fileInput = useRef(null);
+
+    const saveprofileImg = (e) => {
+        e.preventDefault();
+        // console.log(e.target.files[0]);
+        setProfileImg(e.target.files[0]);
+
+        //이미지 표시
+        const reader = new FileReader();
+        reader.onload = () => {
+            if(reader.readyState === 2){
+                setProfileImg(reader.result);
+            }
+        }
+        reader.readAsDataURL(e.target.files[0]);
     }
+
+    // const getInputTitle = (e) => {
+    //     let newInputTitle = {...inputTitle};
+    //     newInputTitle[e.target.name] = e.target.value;
+    //     setInputTitle(newInputTitle);
+    // }
     
 
     const createInputBox = (e) => {
@@ -66,8 +86,24 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                 </Styled.ModalHeader>
                 <Styled.ModalBody>
                     <Styled.ProfileImgBox>
-                        <img src={inputValue[1].profile_img} alt={inputValue[1].name} />
-                        {/* 사진 업로드 아이콘(input[type=file]) 위치 */}
+                        <img src={profileImg} alt={inputValue[1].name} />
+                        <IconButton onClick={()=>fileInput.current.click()}
+                                    style={{
+                                        background:'#fff',
+                                        position:'absolute',
+                                        bottom:'0px',
+                                        right:'28%',
+                                        border:'1px solid #ededed',
+                                        boxShadow:'0 0 10px 0 rgba(0,0,0,.25)'
+                                    }}>
+                            <FileUpload />
+                        </IconButton>
+                        <input type="file" 
+                               name="userimg" 
+                               accept="image/*"
+                               style={{display:'none'}} 
+                               ref={fileInput}                               
+                               onChange={saveprofileImg} />
                     </Styled.ProfileImgBox>
                     
                     <Styled.ProfileInputBox>
