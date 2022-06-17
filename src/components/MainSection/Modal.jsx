@@ -3,10 +3,9 @@ import * as Styled from "./modalStyled";
 import { Add, FileUpload } from '@mui/icons-material';
 import { IconButton, Input } from '@mui/material'
 
-const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitle}) => {
+const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValue, inputTitle, setInputTitle}) => {
 
     /* 프로필 이미지 업로드 */
-    const [profileImg, setProfileImg] = useState(inputValue[1].profile_img);
     const fileInput = useRef(null);
 
     const saveprofileImg = (e) => {
@@ -24,47 +23,22 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
         reader.readAsDataURL(e.target.files[0]);
     }
 
-    // const getInputTitle = (e) => {
-    //     let newInputTitle = {...inputTitle};
-    //     newInputTitle[e.target.name] = e.target.value;
-    //     setInputTitle(newInputTitle);
-    // }
+    const handleInputTitle = (e) => {
+        let newInputTitle = {...inputTitle};
+        newInputTitle[e.target.name] = e.target.value;
+        setInputTitle(newInputTitle);
+    }
     
 
     const createInputBox = (e) => {
         //새 input 만들기
         /*
         return(
-        <Styled.ProfileInputBox>
-                        <Styled.ProfileInputTitle>
-                            <IconButton sx={{padding:'0 4px'}} onClick={(e)=>createInputBox()}>
-                                <Add />
-                            </IconButton>
-                            <Input 
-                                type="text"
-                                name="addInput"
-                                sx={{
-                                    border:'none',
-                                    background:'#fff',
-                                    fontFamily:"'Gowun Dodum', sans-serif",
-                                    width:'90%'
-                                }}
-                                value={inputValue}
-                                onChange={(e) => handleChange(e)}
-                            />
-                        </Styled.ProfileInputTitle>
-                        {inputValue && <Input
-                                                    sx={{
-                                                        width:'98%',
-                                                        marginLeft:'7px',
-                                                        fontFamily:"'Gowun Dodum', sans-serif"
-                                                    }} />
-                        }
-                    </Styled.ProfileInputBox>
+        
         )*/
     }
 
-    const handleChange = (e) => {
+    const handleInputValue = (e) => {
         let newInputValue = {...inputValue};
         newInputValue[e.target.name] = e.target.value;
         setInputValue(newInputValue);
@@ -121,7 +95,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                     width:'90%'
                                 }}
                                 value={inputTitle.name}
-                                // onChange={(e) => handleChange(e)}
+                                onChange={(e) => handleInputTitle(e)}
                             />
                         </Styled.ProfileInputTitle>
                         <Input
@@ -131,7 +105,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 marginLeft:'7px',
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
-                            onChange={e=>handleChange(e)}
+                            onChange={e=>handleInputValue(e)}
                             value={inputValue[1].name}
                             />
                     </Styled.ProfileInputBox>
@@ -150,7 +124,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                     width:'90%'
                                 }}
                                 value={inputTitle.birth}
-                                // onChange={(e) => handleChange(e)}
+                                onChange={(e) => handleInputTitle(e)}
                             />
                         </Styled.ProfileInputTitle>
                         <Input
@@ -160,7 +134,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 marginLeft:'7px',
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
-                            onChange={e=>handleChange(e)}
+                            onChange={e=>handleInputValue(e)}
                             value={inputValue[1].birth}
                             />
                     </Styled.ProfileInputBox>
@@ -179,7 +153,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                     width:'90%'
                                 }}
                                 value={inputTitle.like}
-                                // onChange={(e) => handleChange(e)}
+                                onChange={(e) => handleInputTitle(e)}
                             />
                         </Styled.ProfileInputTitle>
                         <Input
@@ -189,7 +163,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 marginLeft:'7px',
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
-                            onChange={e=>handleChange(e)}
+                            onChange={e=>handleInputValue(e)}
                             value={inputValue[1].like}
                             />
                     </Styled.ProfileInputBox>
@@ -208,7 +182,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                     width:'90%'
                                 }}
                                 value={inputTitle.dislike}
-                                // onChange={(e) => handleChange(e)}
+                                onChange={(e) => handleInputTitle(e)}
                             />
                         </Styled.ProfileInputTitle>
                         <Input
@@ -218,7 +192,7 @@ const Modal = ({open, close, inputValue, setInputValue, inputTitle, setInputTitl
                                 marginLeft:'7px',
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
-                            onChange={e=>handleChange(e)}
+                            onChange={e=>handleInputValue(e)}
                             value={inputValue[1].dislike}
                             />
                     </Styled.ProfileInputBox>

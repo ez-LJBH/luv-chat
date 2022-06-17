@@ -6,6 +6,7 @@ import Modal from "./Modal";
 import { MoreVert } from "@mui/icons-material";
 
 const MainSection = () => {
+  
   const [inputTitle, setInputTitle] = useState({
     name:'이름',
     birth:'생일',
@@ -97,6 +98,8 @@ const MainSection = () => {
     }
   ]);
 
+  const [profileImg, setProfileImg] = useState(inputValue[1].profile_img);
+
 
   return (
     <Styled.Wrapper>
@@ -138,13 +141,13 @@ const MainSection = () => {
           </Styled.EditBtn>
 
           <Styled.ProfileImg>
-            <img src="images/main/profile_me.jpg" alt="my profile" />
+            <img src={profileImg} alt="my profile" />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>이름:{inputValue[1].name}</p>
-            <p>생일:{inputValue[1].birth}</p>
-            <p>좋아하는거:{inputValue[1].like}</p>
-            <p>싫어하는거:{inputValue[1].dislike}</p>
+            <p>{inputTitle.name}:{inputValue[1].name}</p>
+            <p>{inputTitle.birth}:{inputValue[1].birth}</p>
+            <p>{inputTitle.like}:{inputValue[1].like}</p>
+            <p>{inputTitle.dislike}:{inputValue[1].dislike}</p>
           </Styled.ProfileText>
         </Styled.ProfileBox>
 
@@ -184,7 +187,14 @@ const MainSection = () => {
           </Styled.ProfileText>
         </Styled.ProfileBox>
       </Styled.Profile>
-      <Modal open={modal} close={closeModal} inputValue={inputValue} setInputValue={setInputValue} inputTitle={inputTitle} setInputTitle={setInputTitle} />
+      <Modal open={modal}
+      close={closeModal}
+      profileImg={profileImg}
+      setProfileImg={setProfileImg}
+      inputValue={inputValue} 
+      setInputValue={setInputValue} 
+      inputTitle={inputTitle} 
+      setInputTitle={setInputTitle} />
     </Styled.Wrapper>
   );
 };
