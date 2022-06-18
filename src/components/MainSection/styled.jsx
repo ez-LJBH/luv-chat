@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const Wrapper = styled.div`
     font-family: 'Gowun Dodum', sans-serif;
@@ -57,7 +57,7 @@ export const ProfileBox = styled.div`
     margin:15px 0;
     background:#fff;
     border-radius:8px;
-    box-shadow:0 0 15px 0 rgba(0,0,0,.2);
+    box-shadow:0 0 15px 0 rgba(0,0,0,.15);
 `
 export const ProfileImg = styled.div`
     img{
@@ -83,9 +83,17 @@ export  const ProfileText = styled.div`
     }
 
 `
+export const floating = keyframes`
+    0% { transform:translateY(0) }
+    20% { transform:translateY(-3px) }
+    40% { transform:translateY(0) }
+    60% { transform:translateY(3px) }
+`
 export const HeartImg = styled.div`
     margin:0 15px;
+    animation: ${floating} 2s infinite linear;
     img{
         width:80px;
+        
     }
 `
