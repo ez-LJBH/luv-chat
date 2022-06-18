@@ -18,6 +18,7 @@
     "dayjs": "^1.11.3",
     "icons": "^1.0.0",
     "react": "^18.1.0",
+    "react-calendar": "^3.7.0",
     "react-dom": "^18.1.0",
     "react-icons": "^4.3.1",
     "react-modal-image": "^2.5.0",
