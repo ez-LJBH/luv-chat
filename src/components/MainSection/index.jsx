@@ -1,21 +1,12 @@
 import * as Styled from "./styled";
-import { IconButton, Menu, MenuItem, Input, Button } from "@mui/material";
+import { IconButton, Menu, MenuItem, Button } from "@mui/material";
 import React, { useState, useEffect, useRef } from "react";
-import axios from 'axios';
 import Modal1 from "./Modal/Modal1";
 import Modal2 from "./Modal/Modal2";
 import { MoreVert } from "@mui/icons-material";
 
 const MainSection = () => {
   
-  const [inputTitle, setInputTitle] = useState({
-    name:'이름',
-    birth:'생일',
-    like:'좋아하는거',
-    dislike:'싫어하는거'
-  });
-
-
   /* Dday 설정 */
   const loveDate = new Date("2022-05-04");
   const loveYear = loveDate.getFullYear();
@@ -83,6 +74,13 @@ const MainSection = () => {
   };
 
   /* Modal의 데이터 받기 */
+  const [inputTitle, setInputTitle] = useState({
+    name:'이름',
+    birth:'생일',
+    like:'좋아하는거',
+    dislike:'싫어하는거'
+  });
+
   const [inputValue, setInputValue] = useState([
     {
       name:'김사람',
@@ -102,6 +100,11 @@ const MainSection = () => {
 
   const [profileImg1, setProfileImg1] = useState(inputValue[0].profile_img);
   const [profileImg2, setProfileImg2] = useState(inputValue[1].profile_img);
+
+  
+  useEffect(()=>{
+      // console.log('렌더링이 일어남');
+  }, [mainImg, inputTitle, inputValue, profileImg1, profileImg2]);
 
   return (
     <Styled.Wrapper>
@@ -153,10 +156,10 @@ const MainSection = () => {
             <img src={profileImg1} alt={inputValue[0].name} />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>{inputTitle.name}:{inputValue[0].name}</p>
-            <p>{inputTitle.birth}:{inputValue[0].birth}</p>
-            <p>{inputTitle.like}:{inputValue[0].like}</p>
-            <p>{inputTitle.dislike}:{inputValue[0].dislike}</p>
+            <p>{inputTitle.name}{inputTitle.name ? ':' : ''}{inputValue[0].name}</p>
+            <p>{inputTitle.birth}{inputTitle.birth ? ':' : ''}{inputValue[0].birth}</p>
+            <p>{inputTitle.like}{inputTitle.like ? ':' : ''}{inputValue[0].like}</p>
+            <p>{inputTitle.dislike}{inputTitle.dislike ? ':' : ''}{inputValue[0].dislike}</p>
           </Styled.ProfileText>
         </Styled.ProfileBox>
 
@@ -189,10 +192,10 @@ const MainSection = () => {
             <img src={profileImg2} alt={inputValue[1].name} />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>{inputTitle.name}:{inputValue[1].name}</p>
-            <p>{inputTitle.birth}:{inputValue[1].birth}</p>
-            <p>{inputTitle.like}:{inputValue[1].like}</p>
-            <p>{inputTitle.dislike}:{inputValue[1].dislike}</p>
+          <p>{inputTitle.name}{inputTitle.name ? ':' : ''}{inputValue[1].name}</p>
+            <p>{inputTitle.birth}{inputTitle.birth ? ':' : ''}{inputValue[1].birth}</p>
+            <p>{inputTitle.like}{inputTitle.like ? ':' : ''}{inputValue[1].like}</p>
+            <p>{inputTitle.dislike}{inputTitle.dislike ? ':' : ''}{inputValue[1].dislike}</p>
           </Styled.ProfileText>
         </Styled.ProfileBox>
       </Styled.Profile>
