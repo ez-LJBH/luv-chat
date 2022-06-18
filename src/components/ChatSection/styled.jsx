@@ -2,89 +2,33 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 785px;
-  background: #f5c7e9;
-`;
-// 탑바 시작
-export const Topbar = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  height: 80px;
-  background: #f5c7e9;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-`;
-export const TopProfileMe = styled.div`
-  display: flex;
-  background-image: url("images/main/meimg.jpg");
-  width: 50px;
-  height: 50px;
-  margin-top: 10px;
-  margin-left: 30px;
-  border-radius: 50%;
-`;
-export const HeartImg = styled.div`
-  margin: 0 15px;
-  img {
-    width: 30px;
-    height: 25px;
-    margin-top: 20px;
-    margin-left: 20px;
-  }
-`;
-
-export const TopProfileYou = styled.div`
-  display: flex;
-  background-image: url("images/main/youimg.jpg");
-  width: 50px;
-  height: 50px;
-  margin-top: 10px;
-  margin-left: 20px;
-  border-radius: 50%;
-`;
-export const MenuBtn = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 85%;
-  height: 80px;
-  padding: 20px 20px;
-`;
-// 탑바 끝
-
-export const Rowbar = styled.div`
-  display: flex;
-  justify-content: space-between;
-  background: #fe6fd9;
-  width: 100%;
   height: 100%;
 `;
 
-export const chatBox = styled.div`
-  margin-top: 720px;
-  margin-left: 280px;
-  width: 1250px;
-  height: 50px;
-  background: #fff;
-  border: 1px solid #fff;
-  border-radius: 10px;
+export const FlexContainer = styled.div`
+  display: flex;
+  height: inherit;
 `;
 
-export const send = styled.button`
-  margin-top: 720px;
-  margin-right: 60px;
-  width: 80px;
-  height: 50px;
-  border: 1px solid #fff;
-  background-color: yellow;
-  padding: 15px 15px;
-  border-radius: 5px;
+export const ChatBox = styled.div`
+  height: inherit;
+  width: calc(100% - 320px);
 `;
-export const chatText = styled.textarea`
-  border: 1px solid #fff;
-  border-radius: 5px;
+
+export const ChatContent = styled.div`
+  height: calc(100% - 160px);
   width: 100%;
-  height: 100%;
-  text-align: center;
-  font-size: 15px;
+  background-color: #fcdefd;
+  overflow-y: scroll;
+`;
+
+export const ChatTextarea = styled.div`
+  height: 160px;
+  padding: 12px;
+  background-color: #cfebfa;
+`;
+
+export const AlbumBox = styled.div`
+  width: 320px;
+  background-color: 1px solid #c7b9ba;
 `;
