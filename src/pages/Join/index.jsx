@@ -37,6 +37,13 @@ const Join = ({ setIsDrawable }) => {
     [id, navigate, password, passwordChk, setIsDrawable]
   );
 
+  const focusInput = useCallback((e) => {
+    const target = e.target;
+    const parentDiv = target.closest(".parent-div");
+    const inputTag = parentDiv.getElementsByTagName("input")[0];
+    inputTag.focus();
+  }, []);
+
   const onChangeId = useCallback((e) => {
     setId(e.target.value);
   }, []);
@@ -60,12 +67,12 @@ const Join = ({ setIsDrawable }) => {
         <Styled.Box>
           <Styled.Form onSubmit={join}>
             <div>
-              <div>
+              <div className="parent-div" onClick={focusInput}>
                 <BsPerson style={{ fontSize: "20px", color: "#7a7272" }} />
                 {!id && <Styled.PlaceHolder>아이디</Styled.PlaceHolder>}
                 <input type="text" value={id} onChange={onChangeId} />
               </div>
-              <div>
+              <div className="parent-div" onClick={focusInput}>
                 <BsLock style={{ fontSize: "20px", color: "#7a7272" }} />
                 {!password && <Styled.PlaceHolder>비밀번호</Styled.PlaceHolder>}
                 <input
@@ -74,7 +81,7 @@ const Join = ({ setIsDrawable }) => {
                   onChange={onChangePassword}
                 />
               </div>
-              <div>
+              <div className="parent-div" onClick={focusInput}>
                 <BsLock style={{ fontSize: "20px", color: "#7a7272" }} />
                 {!passwordChk && (
                   <Styled.PlaceHolder>비밀번호 확인</Styled.PlaceHolder>
