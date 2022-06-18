@@ -16,10 +16,10 @@ export const LoveDate = styled.div`
     height:300px;
     text-align:center;
     border-radius:10px;
-    background:#fff;
-    box-shadow:0 0 15px 0 rgba(0,0,0,.2);
     font-size:20px;
-    padding-top:3%;
+    position:relative;
+    background-image:url('/images/main/memo.png');
+    padding-top:70px;
     p{
         margin:0;
     }
