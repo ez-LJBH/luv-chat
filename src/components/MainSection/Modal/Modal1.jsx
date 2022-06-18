@@ -3,7 +3,7 @@ import * as Styled from "./modalStyled";
 import { Add, FileUpload } from '@mui/icons-material';
 import { IconButton, Input } from '@mui/material'
 
-const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValue, inputTitle, setInputTitle}) => {
+const Modal = ({isOpen, close, profileImg, setProfileImg, inputValue, setInputValue, inputTitle, setInputTitle}) => {
     
     //input value를 받아서 state를 수정하고, submit했을 때 수정된 state를 index.jsx로 보내기 위함
     const [modalProfileData, setModalProfileData] = useState({...inputValue});
@@ -11,11 +11,13 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
 
     /* 프로필 이미지 업로드 */
     const fileInput = useRef(null);
-    const [previewProfileImg, setPreviewProfileImg] = useState(modalProfileData[0].profile_img);
+    const [previewProfileImg, setPreviewProfileImg] = useState(profileImg);
     const handlePriewProfileImg = (e) => {
         e.preventDefault();
         // console.log(e.target.files[0]);
-        setPreviewProfileImg(e.target.files[0]);
+        let newProfileData = {...modalProfileData};
+        newProfileData.profile_img = e.target.files[0];
+        setPreviewProfileImg({...newModalProfileData});
 
         //이미지 표시
         const reader = new FileReader();
@@ -58,8 +60,8 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
     }
 
   return (
-    <div className={open ? 'openModal modal' : "modal"}>
-        {open ? (
+    <div className={isOpen ? 'openModal modal' : "modal"}>
+        {isOpen ? (
             <Styled.Popup id="profileEditForm" onSubmit={handleSubmit}>
                 <Styled.ModalHeader>
                     <h4>프로필 수정</h4>

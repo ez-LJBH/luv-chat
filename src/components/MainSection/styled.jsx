@@ -27,15 +27,50 @@ export const LoveDate = styled.div`
         font-size:80px;
     }
 `
+export const fadein = keyframes`
+    0% { opacity: 1 }
+    100% { opacity:0.6 }
+`
+export const fadeinFast = keyframes`
+    0% { opacity: 0 }
+    100% { opacity: 1 }
+`
 export const MainImg = styled.div`
-    width:700px;
+    width:740px;
     height:300px;
     overflow:hidden;
     border-radius:10px;
     box-shadow:0 0 15px 0 rgba(0,0,0,.2);
+    position:relative;
+    &:hover{
+        img{
+            animation: ${fadein} 0.5s ease-in-out forwards;
+        }
+        button{
+            display:block;
+            animation: ${fadeinFast} 0.5s ease-in-out forwards;
+        }
+    }
     img{
         width:100%;
         object-fit:cover;
+    }
+    button{
+        display:none;
+        position:absolute;
+        left:50%;
+        top:130px;
+        transform:translateX(-50%);
+        background:#fb9ea4;
+        color:#000;
+        font-family: 'Gowun Dodum', sans-serif;
+        font-size:16px;
+        border-radius:40px;
+    }
+    button:hover{
+        background:#fff;
+        color:#333;
+        display:block;
     }
 `
 export const Profile = styled.div`
@@ -81,7 +116,6 @@ export  const ProfileText = styled.div`
             margin-bottom:1em;
         }
     }
-
 `
 export const floating = keyframes`
     0% { transform:translateY(0) }

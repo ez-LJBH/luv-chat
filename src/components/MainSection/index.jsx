@@ -1,8 +1,9 @@
 import * as Styled from "./styled";
-import { IconButton, Menu, MenuItem } from "@mui/material";
-import React, { useState, useEffect } from "react";
+import { IconButton, Menu, MenuItem, Input, Button } from "@mui/material";
+import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
-import Modal from "./Modal";
+import Modal1 from "./Modal/Modal1";
+import Modal2 from "./Modal/Modal2";
 import { MoreVert } from "@mui/icons-material";
 
 const MainSection = () => {
@@ -14,7 +15,6 @@ const MainSection = () => {
     dislike:'싫어하는거'
   });
 
-  const [profileData, setProfileData] = useState([]);
 
   /* Dday 설정 */
   const loveDate = new Date("2022-05-04");
@@ -28,60 +28,62 @@ const MainSection = () => {
   const passedTime = nowDate.getTime() - loveDate.getTime() + KoreaTime;
   const passedDay = Math.round(passedTime / (24 * 60 * 60 * 1000));
 
-  // /* 프로필 데이터 */
-  // useEffect(()=>{
-  //   const getProfileData = async () => {
-  //     const info = await axios.get('/data/modal.json')
-  //     .then( res => setProfileData(...profileData, res.data) );
-  //   }
-  //   getProfileData();
-  // }, []);
-  // // console.log(profileData); //불러오기 전에 console이 먼저 찍혀서 undefined 출력됨
+  /* 메인 사진 편집 */
+  const fileInput = useRef(null);
+  const [mainImg, setMainImg] = useState('/images/main/main_img.jpg');
+  const handleMainImg = (e) => {
+    e.preventDefault();
 
-  /* axios 불러오는 속도 차이때문에 오류나는 것 같은데..
-  let profileDataList = profileData.map( data => {
-    // console.log(data);
-    <div key={data.id}>
-      <Styled.ProfileImg>
-            <img src={data.profile_img} alt={data.name} />
-          </Styled.ProfileImg>
-          <Styled.ProfileText>
-            <p>이름:{data.name}</p>
-            <p>생일:{data.birth}</p>
-            <p>좋아하는거:{data.like}</p>
-            <p>싫어하는거:{data.dislike}</p>
-          </Styled.ProfileText>
-    </div>
-  })
-  */
+    let newMainImg = mainImg;
+    newMainImg = e.target.files[0];
+    setMainImg({...newMainImg});
+
+    //이미지 표시
+    const reader = new FileReader();
+    reader.onload = () => {
+        if(reader.readyState === 2){
+            setMainImg(reader.result);
+        }
+    }
+    reader.readAsDataURL(e.target.files[0]);
+  }
 
   /* 프로필 수정 버튼 */
-  const [anchorEl, setAnchorEl] = useState(null);
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
+  const [anchorEl1, setAnchorEl1] = useState(null);
+  const [anchorEl2, setAnchorEl2] = useState(null);
+  const handleMenu1 = (e) => {
+    setAnchorEl1(e.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleMenu2 = (e) => {
+    setAnchorEl2(e.currentTarget);
+  };
+  const handleClose1 = () => {
+    setAnchorEl1(null);
+  };
+  const handleClose2 = () => {
+    setAnchorEl2(null);
   };
 
-  /* 프로필 수정 팝업창 */
-  const [modal, setModal] = useState(false);
-  const openModal = () => {
-    handleClose();
-    setModal(true);
+  /* 프로필 수정 팝업창 상태 관리 */
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+  const openModal1 = () => {
+    handleClose1();
+    setIsOpen1(true);
+  }
+  const openModal2 = () => {
+    handleClose2();
+    setIsOpen2(true);
+  }
+  const closeModal1 = () => {
+    setIsOpen1(false);
   };
-  const closeModal = () => {
-    setModal(false);
+  const closeModal2 = () => {
+    setIsOpen2(false);
   };
 
   /* Modal의 데이터 받기 */
   const [inputValue, setInputValue] = useState([
-    // {
-    //   name:'',
-    //   birth:'',
-    //   like:'',
-    //   dislike:''
-    // },
     {
       name:'김사람',
       birth:'1990.01.01',
@@ -98,8 +100,8 @@ const MainSection = () => {
     }
   ]);
 
-  const [profileImg, setProfileImg] = useState(inputValue[0].profile_img);
-
+  const [profileImg1, setProfileImg1] = useState(inputValue[0].profile_img);
+  const [profileImg2, setProfileImg2] = useState(inputValue[1].profile_img);
 
   return (
     <Styled.Wrapper>
@@ -113,7 +115,14 @@ const MainSection = () => {
         </Styled.LoveDate>
 
         <Styled.MainImg>
-          <img src="images/main/main_img.jpg" alt="main" />
+          <img src={mainImg} alt="main image" />
+          <Button onClick={()=>fileInput.current.click()}>사진 편집</Button>
+          <input type="file" 
+                 name="userimg" 
+                 accept="image/*"
+                 style={{display:'none'}} 
+                 ref={fileInput}                               
+                 onChange={handleMainImg} />
         </Styled.MainImg>
       </Styled.MainTop>
 
@@ -125,23 +134,23 @@ const MainSection = () => {
               aria-label="profile edit button"
               aria-controls="edit-btn"
               aria-haspopup="true"
-              onClick={handleMenu}
+              onClick={handleMenu1}
             >
               <MoreVert />
             </IconButton>
             <Menu
               id="edit-btn"
-              anchorEl={anchorEl}
+              anchorEl={anchorEl1}
               keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
+              open={Boolean(anchorEl1)}
+              onClose={handleClose1}
             >
-              <MenuItem onClick={openModal}>Edit</MenuItem>
+              <MenuItem onClick={openModal1}>edit</MenuItem>
             </Menu>
           </Styled.EditBtn>
 
           <Styled.ProfileImg>
-            <img src={profileImg} alt={inputValue[0].name} />
+            <img src={profileImg1} alt={inputValue[0].name} />
           </Styled.ProfileImg>
           <Styled.ProfileText>
             <p>{inputTitle.name}:{inputValue[0].name}</p>
@@ -162,35 +171,44 @@ const MainSection = () => {
               aria-label="profile edit button"
               aria-controls="edit-btn"
               aria-haspopup="true"
-              onClick={handleMenu}
+              onClick={handleMenu2}
             >
               <MoreVert />
             </IconButton>
             <Menu
               id="edit-btn"
-              anchorEl={anchorEl}
+              anchorEl={anchorEl2}
               keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
+              open={Boolean(anchorEl2)}
+              onClose={handleClose2}
             >
-              <MenuItem onClick={openModal}>Edit</MenuItem>
+              <MenuItem onClick={openModal2}>edit</MenuItem>
             </Menu>
           </Styled.EditBtn>
           <Styled.ProfileImg>
-            <img src="images/main/profile_you.jpg" alt={inputValue[1].name} />
+            <img src={profileImg2} alt={inputValue[1].name} />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>이름:{inputValue[1].name}</p>
-            <p>생일:{inputValue[1].birth}</p>
-            <p>좋아하는거:{inputValue[1].like}</p>
-            <p>싫어하는거:{inputValue[1].dislike}</p>
+            <p>{inputTitle.name}:{inputValue[1].name}</p>
+            <p>{inputTitle.birth}:{inputValue[1].birth}</p>
+            <p>{inputTitle.like}:{inputValue[1].like}</p>
+            <p>{inputTitle.dislike}:{inputValue[1].dislike}</p>
           </Styled.ProfileText>
         </Styled.ProfileBox>
       </Styled.Profile>
-      <Modal open={modal}
-             close={closeModal}
-             profileImg={profileImg}
-             setProfileImg={setProfileImg}
+      
+      <Modal1 isOpen={isOpen1}
+             close={closeModal1}
+             profileImg={profileImg1}
+             setProfileImg={setProfileImg1}
+             inputValue={inputValue} 
+             setInputValue={setInputValue} 
+             inputTitle={inputTitle} 
+             setInputTitle={setInputTitle} />
+      <Modal2 isOpen={isOpen2}
+             close={closeModal2}
+             profileImg={profileImg2}
+             setProfileImg={setProfileImg2}
              inputValue={inputValue} 
              setInputValue={setInputValue} 
              inputTitle={inputTitle} 
