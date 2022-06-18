@@ -1,3 +1,4 @@
+import "react-calendar/dist/Calendar.css";
 import "./styles/index.css";
 
 import App from "./App";
