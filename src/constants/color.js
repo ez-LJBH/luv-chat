@@ -15,4 +15,5 @@ export const colors = {
   color14: "#FFFFFF",
   color15: "#7FAD8A",
   color16: "#E8FAED",
+  color17: "#c5c5c6",
 };
