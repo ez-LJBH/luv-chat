@@ -180,7 +180,7 @@ const MainSection = () => {
             <img src="images/main/profile_you.jpg" alt="your profile" />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-          <p>이름:{inputValue[2].name}</p>
+            <p>이름:{inputValue[2].name}</p>
             <p>생일:{inputValue[2].birth}</p>
             <p>좋아하는거:{inputValue[2].like}</p>
             <p>싫어하는거:{inputValue[2].dislike}</p>
@@ -188,13 +188,13 @@ const MainSection = () => {
         </Styled.ProfileBox>
       </Styled.Profile>
       <Modal open={modal}
-      close={closeModal}
-      profileImg={profileImg}
-      setProfileImg={setProfileImg}
-      inputValue={inputValue} 
-      setInputValue={setInputValue} 
-      inputTitle={inputTitle} 
-      setInputTitle={setInputTitle} />
+             close={closeModal}
+             profileImg={profileImg}
+             setProfileImg={setProfileImg}
+             inputValue={inputValue} 
+             setInputValue={setInputValue} 
+             inputTitle={inputTitle} 
+             setInputTitle={setInputTitle} />
     </Styled.Wrapper>
   );
 };

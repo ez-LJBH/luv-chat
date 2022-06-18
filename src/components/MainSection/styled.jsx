@@ -8,7 +8,7 @@ export const MainTop = styled.div`
     border:1px solid #000;
     display:flex;
     align-items:center;
-    justify-content:space-around;
+    justify-content:space-between;
 `
 export const LoveDate = styled.div`
     width:300px;
@@ -44,10 +44,12 @@ export const ProfileBox = styled.div`
 `
 export const ProfileImg = styled.div`
     img{
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto 5px;
         width:150px;
         height:150px;
-        border-radius:50%;
-        margin-bottom:5px;
+        object-fit:cover;
     }
 `
 export  const ProfileText = styled.div`
