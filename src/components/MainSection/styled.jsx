@@ -3,44 +3,61 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
     font-family: 'Gowun Dodum', sans-serif;
     padding:30px;
+    background:#fffcf6;
 `
 export const MainTop = styled.div`
-    border:1px solid #000;
     display:flex;
     align-items:center;
     justify-content:space-between;
+    align-items:center;
 `
 export const LoveDate = styled.div`
     width:300px;
     height:300px;
     text-align:center;
+    border-radius:10px;
+    background:#fff;
+    box-shadow:0 0 15px 0 rgba(0,0,0,.2);
+    font-size:20px;
+    padding-top:3%;
+    p{
+        margin:0;
+    }
+    span{
+        font-size:80px;
+    }
 `
 export const MainImg = styled.div`
     width:700px;
     height:300px;
     overflow:hidden;
+    border-radius:10px;
+    box-shadow:0 0 15px 0 rgba(0,0,0,.2);
     img{
         width:100%;
+        object-fit:cover;
     }
 `
 export const Profile = styled.div`
     width:100%;
-    border:1px solid #000;
     margin-top:30px;
     display:flex;
     justify-content:center;
     align-items:center;
+    background:#fbeaeb;
+    border-radius:10px;
+    box-shadow:0 0 15px 0 rgba(0,0,0,.2);
 `
 export const EditBtn = styled.div`
     text-align:right;
 `
 export const ProfileBox = styled.div`
-    border:1px solid #000;
     width:250px;
     text-align:center;
-    /* border-radius:8px; */
     margin:15px 0;
     background:#fff;
+    border-radius:8px;
+    box-shadow:0 0 15px 0 rgba(0,0,0,.2);
 `
 export const ProfileImg = styled.div`
     img{

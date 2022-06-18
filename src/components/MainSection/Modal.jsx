@@ -11,8 +11,8 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
 
     /* 프로필 이미지 업로드 */
     const fileInput = useRef(null);
-    const [previewProfileImg, setPreviewProfileImg] = useState(modalProfileData[1].profile_img);
-    const saveprofileImg = (e) => {
+    const [previewProfileImg, setPreviewProfileImg] = useState(modalProfileData[0].profile_img);
+    const handlePriewProfileImg = (e) => {
         e.preventDefault();
         // console.log(e.target.files[0]);
         setPreviewProfileImg(e.target.files[0]);
@@ -44,7 +44,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
     
     let newModalProfileData = modalProfileData;
     const handleInputValue = (e) => {
-        newModalProfileData[1][e.target.name] = e.target.value;
+        newModalProfileData[0][e.target.name] = e.target.value;
         setModalProfileData({...newModalProfileData});
     }
 
@@ -67,7 +67,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                 </Styled.ModalHeader>
                 <Styled.ModalBody>
                     <Styled.ProfileImgBox>
-                        <img src={previewProfileImg} alt={modalProfileData[1].name} />
+                        <img src={previewProfileImg} alt={modalProfileData[0].name} />
                         <IconButton onClick={()=>fileInput.current.click()}
                                     style={{
                                         background:'#fff',
@@ -84,7 +84,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                accept="image/*"
                                style={{display:'none'}} 
                                ref={fileInput}                               
-                               onChange={saveprofileImg} />
+                               onChange={handlePriewProfileImg} />
                     </Styled.ProfileImgBox>
                     
                     <Styled.ProfileInputBox>
@@ -113,7 +113,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleInputValue(e)}
-                            value={modalProfileData[1].name}
+                            value={modalProfileData[0].name}
                             />
                     </Styled.ProfileInputBox>
                     <Styled.ProfileInputBox>
@@ -142,7 +142,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleInputValue(e)}
-                            value={modalProfileData[1].birth}
+                            value={modalProfileData[0].birth}
                             />
                     </Styled.ProfileInputBox>
                     <Styled.ProfileInputBox>
@@ -171,7 +171,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleInputValue(e)}
-                            value={modalProfileData[1].like}
+                            value={modalProfileData[0].like}
                             />
                     </Styled.ProfileInputBox>
                     <Styled.ProfileInputBox>
@@ -200,7 +200,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleInputValue(e)}
-                            value={modalProfileData[1].dislike}
+                            value={modalProfileData[0].dislike}
                             />
                     </Styled.ProfileInputBox>
                 </Styled.ModalBody>

@@ -76,12 +76,12 @@ const MainSection = () => {
 
   /* Modal의 데이터 받기 */
   const [inputValue, setInputValue] = useState([
-    {
-      name:'',
-      birth:'',
-      like:'',
-      dislike:''
-    },
+    // {
+    //   name:'',
+    //   birth:'',
+    //   like:'',
+    //   dislike:''
+    // },
     {
       name:'김사람',
       birth:'1990.01.01',
@@ -98,7 +98,7 @@ const MainSection = () => {
     }
   ]);
 
-  const [profileImg, setProfileImg] = useState(inputValue[1].profile_img);
+  const [profileImg, setProfileImg] = useState(inputValue[0].profile_img);
 
 
   return (
@@ -109,7 +109,7 @@ const MainSection = () => {
           <p>
             {loveYear}.{loveMonth}.{loveDay}부터
           </p>
-          <p>{passedDay}일♥</p>
+          <p><span>{passedDay}</span>일♥</p>
         </Styled.LoveDate>
 
         <Styled.MainImg>
@@ -141,13 +141,13 @@ const MainSection = () => {
           </Styled.EditBtn>
 
           <Styled.ProfileImg>
-            <img src={profileImg} alt="my profile" />
+            <img src={profileImg} alt={inputValue[0].name} />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>{inputTitle.name}:{inputValue[1].name}</p>
-            <p>{inputTitle.birth}:{inputValue[1].birth}</p>
-            <p>{inputTitle.like}:{inputValue[1].like}</p>
-            <p>{inputTitle.dislike}:{inputValue[1].dislike}</p>
+            <p>{inputTitle.name}:{inputValue[0].name}</p>
+            <p>{inputTitle.birth}:{inputValue[0].birth}</p>
+            <p>{inputTitle.like}:{inputValue[0].like}</p>
+            <p>{inputTitle.dislike}:{inputValue[0].dislike}</p>
           </Styled.ProfileText>
         </Styled.ProfileBox>
 
@@ -177,13 +177,13 @@ const MainSection = () => {
             </Menu>
           </Styled.EditBtn>
           <Styled.ProfileImg>
-            <img src="images/main/profile_you.jpg" alt="your profile" />
+            <img src="images/main/profile_you.jpg" alt={inputValue[1].name} />
           </Styled.ProfileImg>
           <Styled.ProfileText>
-            <p>이름:{inputValue[2].name}</p>
-            <p>생일:{inputValue[2].birth}</p>
-            <p>좋아하는거:{inputValue[2].like}</p>
-            <p>싫어하는거:{inputValue[2].dislike}</p>
+            <p>이름:{inputValue[1].name}</p>
+            <p>생일:{inputValue[1].birth}</p>
+            <p>좋아하는거:{inputValue[1].like}</p>
+            <p>싫어하는거:{inputValue[1].dislike}</p>
           </Styled.ProfileText>
         </Styled.ProfileBox>
       </Styled.Profile>
