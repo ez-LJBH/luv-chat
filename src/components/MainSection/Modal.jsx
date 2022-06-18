@@ -4,31 +4,29 @@ import { Add, FileUpload } from '@mui/icons-material';
 import { IconButton, Input } from '@mui/material'
 
 const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValue, inputTitle, setInputTitle}) => {
+    
+    //input value를 받아서 state를 수정하고, submit했을 때 수정된 state를 index.jsx로 보내기 위함
+    const [modalProfileData, setModalProfileData] = useState({...inputValue});
+    const [modalInputTitle, setModalInputTitle] = useState({...inputTitle});
 
     /* 프로필 이미지 업로드 */
     const fileInput = useRef(null);
-
+    const [previewProfileImg, setPreviewProfileImg] = useState(modalProfileData[1].profile_img);
     const saveprofileImg = (e) => {
         e.preventDefault();
         // console.log(e.target.files[0]);
-        setProfileImg(e.target.files[0]);
+        setPreviewProfileImg(e.target.files[0]);
 
         //이미지 표시
         const reader = new FileReader();
         reader.onload = () => {
             if(reader.readyState === 2){
-                setProfileImg(reader.result);
+                setPreviewProfileImg(reader.result);
             }
         }
         reader.readAsDataURL(e.target.files[0]);
     }
 
-    const handleInputTitle = (e) => {
-        let newInputTitle = {...inputTitle};
-        newInputTitle[e.target.name] = e.target.value;
-        setInputTitle(newInputTitle);
-    }
-    
 
     const createInputBox = (e) => {
         //새 input 만들기
@@ -38,15 +36,24 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
         )*/
     }
 
+    const handleInputTitle = (e) => {
+        let newModalInputTitle = {...modalInputTitle};
+        newModalInputTitle[e.target.name] = e.target.value;
+        setModalInputTitle(newModalInputTitle);
+    }
+    
+    let newModalProfileData = modalProfileData;
     const handleInputValue = (e) => {
-        let newInputValue = {...inputValue};
-        newInputValue[e.target.name] = e.target.value;
-        setInputValue(newInputValue);
-        console.log(newInputValue);
+        newModalProfileData[1][e.target.name] = e.target.value;
+        setModalProfileData({...newModalProfileData});
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        setProfileImg(previewProfileImg);
+        setInputTitle({...modalInputTitle});
+        setInputValue({...modalProfileData});
         close();
     }
 
@@ -60,7 +67,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                 </Styled.ModalHeader>
                 <Styled.ModalBody>
                     <Styled.ProfileImgBox>
-                        <img src={profileImg} alt={inputValue[1].name} />
+                        <img src={previewProfileImg} alt={modalProfileData[1].name} />
                         <IconButton onClick={()=>fileInput.current.click()}
                                     style={{
                                         background:'#fff',
@@ -94,7 +101,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                     fontFamily:"'Gowun Dodum', sans-serif",
                                     width:'90%'
                                 }}
-                                value={inputTitle.name}
+                                value={modalInputTitle.name}
                                 onChange={(e) => handleInputTitle(e)}
                             />
                         </Styled.ProfileInputTitle>
@@ -106,7 +113,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleInputValue(e)}
-                            value={inputValue[1].name}
+                            value={modalProfileData[1].name}
                             />
                     </Styled.ProfileInputBox>
                     <Styled.ProfileInputBox>
@@ -123,7 +130,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                     fontFamily:"'Gowun Dodum', sans-serif",
                                     width:'90%'
                                 }}
-                                value={inputTitle.birth}
+                                value={modalInputTitle.birth}
                                 onChange={(e) => handleInputTitle(e)}
                             />
                         </Styled.ProfileInputTitle>
@@ -135,7 +142,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleInputValue(e)}
-                            value={inputValue[1].birth}
+                            value={modalProfileData[1].birth}
                             />
                     </Styled.ProfileInputBox>
                     <Styled.ProfileInputBox>
@@ -152,7 +159,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                     fontFamily:"'Gowun Dodum', sans-serif",
                                     width:'90%'
                                 }}
-                                value={inputTitle.like}
+                                value={modalInputTitle.like}
                                 onChange={(e) => handleInputTitle(e)}
                             />
                         </Styled.ProfileInputTitle>
@@ -164,7 +171,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleInputValue(e)}
-                            value={inputValue[1].like}
+                            value={modalProfileData[1].like}
                             />
                     </Styled.ProfileInputBox>
                     <Styled.ProfileInputBox>
@@ -181,7 +188,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                     fontFamily:"'Gowun Dodum', sans-serif",
                                     width:'90%'
                                 }}
-                                value={inputTitle.dislike}
+                                value={modalInputTitle.dislike}
                                 onChange={(e) => handleInputTitle(e)}
                             />
                         </Styled.ProfileInputTitle>
@@ -193,7 +200,7 @@ const Modal = ({open, close, profileImg, setProfileImg, inputValue, setInputValu
                                 fontFamily:"'Gowun Dodum', sans-serif"
                             }}
                             onChange={e=>handleInputValue(e)}
-                            value={inputValue[1].dislike}
+                            value={modalProfileData[1].dislike}
                             />
                     </Styled.ProfileInputBox>
                 </Styled.ModalBody>
