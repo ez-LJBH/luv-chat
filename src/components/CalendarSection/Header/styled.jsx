@@ -6,6 +6,7 @@ export const Container = styled.div`
   height: 100px;
   display: flex;
   align-items: center;
+  border-bottom: 1px solid #c5c5c6;
 
   & > :not(:first-child) {
     margin-left: 8px;
