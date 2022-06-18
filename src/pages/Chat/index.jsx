@@ -1,3 +1,5 @@
+import React from "react";
+
 import * as Styled from "./styled";
 import ChatSection from "../../components/ChatSection";
 
