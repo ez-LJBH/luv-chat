@@ -1,7 +1,9 @@
 import React from "react";
 
-const Join = () => {
-  return <div>Join</div>;
+import * as Styled from "./styled";
+
+const Join = ({ setIsDrawable }) => {
+  return <Styled.Container>Join</Styled.Container>;
 };
 
 export default Join;
