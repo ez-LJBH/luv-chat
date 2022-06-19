@@ -2,6 +2,7 @@ import * as Styled from "./styled";
 
 import React, { useEffect, useRef, useState } from "react";
 
+import AlbumList from "./AlbumList";
 import ChatList from "./ChatList";
 import Textarea from "./Textarea";
 import axios from "axios";
@@ -36,7 +37,9 @@ const ChatSection = () => {
             />
           </Styled.ChatTextarea>
         </Styled.ChatBox>
-        <Styled.AlbumBox></Styled.AlbumBox>
+        <Styled.AlbumBox>
+          <AlbumList />
+        </Styled.AlbumBox>
       </Styled.FlexContainer>
     </Styled.Container>
   );

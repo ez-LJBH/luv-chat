@@ -44,6 +44,7 @@ export default function Textarea({ divRef, chatList, setChatList }) {
         value={data}
         onChange={setChatData}
         onKeyDown={sendMessage}
+        placeholder="채팅을 입력해주세요."
       />
     </Styled.Container>
   );

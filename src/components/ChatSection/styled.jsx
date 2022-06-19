@@ -25,10 +25,10 @@ export const ChatContent = styled.div`
 export const ChatTextarea = styled.div`
   height: 160px;
   padding: 12px;
-  background-color: #cfebfa;
+  background-color: #fcdefd;
 `;
 
 export const AlbumBox = styled.div`
   width: 320px;
-  background-color: 1px solid #c7b9ba;
+  background-color: #fbeaeb;
 `;
