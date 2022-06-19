@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
+  min-width: 840px;
   height: calc(100% - 100px);
   padding: 8px 32px;
   overflow-y: scroll;
