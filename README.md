@@ -9,8 +9,8 @@
 # luv-chat
 
 <div align="center">
-  <img src="public/images/preview00.png" width="350px"/>
-  <img src="public/images/preview00.png" width="350px"/>
+  <img src="public/images/preview00.png" width="500px"/>  
+  <img src="public/images/preview01.png" width="500px"/>
 </div>
 
 <br/>
