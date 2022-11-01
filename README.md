@@ -57,16 +57,6 @@
 
 
 
-<!-- How to Play -->
-## How To Play
-
-1. Use arrow keys to move around.
-2. Eat food and get points.
-3. If you hit the walls or your own body, game will be over.
-4. Check your score and try again! 
-<br/>
-
-
 
 <!-- USAGE EXAMPLES -->
 <!--
